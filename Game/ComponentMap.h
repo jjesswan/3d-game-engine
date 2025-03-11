@@ -1,0 +1,4 @@
+#ifndef COMPONENTMAP_H
+#define COMPONENTMAP_H
+
+#endif // COMPONENTMAP_H

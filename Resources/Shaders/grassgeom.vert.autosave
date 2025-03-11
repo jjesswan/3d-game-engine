@@ -1,0 +1,25 @@
+#version 330 core
+
+layout (points) in;
+layout (triangle_strip, max_vertices = 4) out;
+uniform mat4 view, projection;
+
+void makeQuad(){
+    vec4 vertexPos[4];
+    vertexPos[0] = vec4(-.2f, 0.f, 0.f, 0.f); // down left
+    vertexPos[1] = vec4(0.2f, 0.f, 0.f, 0.f); // down right
+    vertexPos[2] = vec4(-0.2f, 0.2f, 0.f, 0.f); // upper left
+    vertexPos[3] = vec4(0.2f, 0.2f, 0.f, 0.f); // upper right
+    
+    for (int i=0; i<4; i++){
+        gl_Position = projection*view*gl_Position;
+        EmitVertex();
+    }
+    
+}
+
+void main(void)
+{
+    gl_Position = qt_ModelViewProjectionMatrix * qt_Vertex;
+    qt_TexCoord0 = qt_MultiTexCoord0;
+}
